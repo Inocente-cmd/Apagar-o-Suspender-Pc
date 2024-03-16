@@ -110,7 +110,7 @@ else:
 
         if hora_str == hora_de_suspencion:
 
-            if opt == 1: # Apagar
+            if opt == "1": # Apagar
             
                 if keyboard.is_pressed('q'):
                     break
@@ -135,7 +135,7 @@ else:
                 break
 
 
-            if opt == 2: # Suspender
+            if opt == "2": # Suspender
             
                 if keyboard.is_pressed('q'):
                     break
