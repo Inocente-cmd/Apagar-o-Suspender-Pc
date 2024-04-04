@@ -16,7 +16,7 @@ def aPrint(string,time_test):
         sys.stdout.flush()
         time.sleep(time_test)
     print()
-aPrint(f"OJO: La aplicacion va a esta precionanado el fn, cuidado que esto le afecte el programa que esta ejecutando ",time_test=0.01)
+aPrint(f"OJO: La aplicacion va a esta precionanado el shift, cuidado que esto le afecte el programa que esta ejecutando ",time_test=0.01)
 
 sleep(2)
 
@@ -64,7 +64,7 @@ while True:
                 char = "No esta cargando"
             if charging == True:
                 char = "Esta cargando"
-            pyautogui.press("fn")
+            pyautogui.press("shift")
             dif_hora_2 = datetime.datetime.now()
             diferencia = dif_hora_2 - dif_hora_1
             diferencia_horas = diferencia.seconds // 3600
@@ -217,5 +217,5 @@ else:
 
 
         else:
-            pyautogui.press("fn")
+            pyautogui.press("shift")
             
