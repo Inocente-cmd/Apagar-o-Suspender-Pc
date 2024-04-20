@@ -20,7 +20,7 @@ aPrint(f"OJO: La aplicacion va a esta precionanado el shift, cuidado que esto le
 
 sleep(2)
 
-print("Para para de emergencia mantenga precionada la tecla 'Q' \n")
+print("Para para de emergencia mantenga precionada la tecla 'control + q' \n")
 
 sleep(0.5)
 
@@ -100,7 +100,7 @@ while True:
 
                 off = 1
                 break
-            if keyboard.is_pressed('q'):
+            if keyboard.is_pressed(['ctrl', 'q']):
                 off = 1
                 break
         break
@@ -111,7 +111,7 @@ while True:
     if opt == "perra": # codigo secreto
             while True:
                 print("Entraste como admin")
-                if keyboard.is_pressed('q'):
+                if keyboard.is_pressed(['ctrl', 'q']):
                     break
                 break 
             off = 1
@@ -150,7 +150,7 @@ else:
         
     
 
-        if keyboard.is_pressed('q'):
+        if keyboard.is_pressed(['ctrl', 'q']):
             break
 
         hora_actual = datetime.datetime.now()
@@ -158,31 +158,30 @@ else:
 
         print("Tiempo actual: ",hora_str,"        ", "Tiempo de ejecucion: ",hora_de_suspencion)
 
-        if keyboard.is_pressed('q'):
-            break
+        
 
 
         if hora_str == hora_de_suspencion:
 
             if opt == "1": # Apagar
             
-                if keyboard.is_pressed('q'):
+                if keyboard.is_pressed(['ctrl', 'q']):
                     break
 
                 aPrint(f"llego el momento para Apagarse ",time_test=0.15)
-                if keyboard.is_pressed('q'):
+                if keyboard.is_pressed(['ctrl', 'q']):
                     break
                 pyautogui.hotkey('win','d')
-                if keyboard.is_pressed('q'):
+                if keyboard.is_pressed(['ctrl', 'q']):
                     break
                 time.sleep(0.9)
                 pyautogui.hotkey('alt','f4')
-                if keyboard.is_pressed('q'):
+                if keyboard.is_pressed(['ctrl', 'q']):
                     break
                 time.sleep(1)
-                if keyboard.is_pressed('q'):
+                if keyboard.is_pressed(['ctrl', 'q']):
                     break
-                if keyboard.is_pressed('q'):
+                if keyboard.is_pressed(['ctrl', 'q']):
                     break
                 pyautogui.press('enter')
 
@@ -191,25 +190,25 @@ else:
 
             if opt == "2": # Suspender
             
-                if keyboard.is_pressed('q'):
+                if keyboard.is_pressed(['ctrl', 'q']):
                     break
 
                 aPrint(f"llego el momento para suspenderse ",time_test=0.15)
-                if keyboard.is_pressed('q'):
+                if keyboard.is_pressed(['ctrl', 'q']):
                     break
                 pyautogui.hotkey('win','d')
-                if keyboard.is_pressed('q'):
+                if keyboard.is_pressed(['ctrl', 'q']):
                     break
                 time.sleep(0.9)
                 pyautogui.hotkey('alt','f4')
-                if keyboard.is_pressed('q'):
+                if keyboard.is_pressed(['ctrl', 'q']):
                     break
                 time.sleep(1)
                 pyautogui.press('up')
-                if keyboard.is_pressed('q'):
+                if keyboard.is_pressed(['ctrl', 'q']):
                     break
                 time.sleep(1)
-                if keyboard.is_pressed('q'):
+                if keyboard.is_pressed(['ctrl', 'q']):
                     break
                 pyautogui.press('enter')
 
