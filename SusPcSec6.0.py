@@ -139,6 +139,7 @@ while True:
             nueva_hora_objeto = hora_objeto + timedelta(seconds=sec)
             hora_de_suspencion = nueva_hora_objeto.strftime('%I:%M:%S %p')
             print("Hora de suspencion:", hora_de_suspencion)
+
             time.sleep(0.5)
             break
 
@@ -146,9 +147,21 @@ if off ==1:
     print("")
 else:
 
+    dif_hora_1 = datetime.datetime.now()
+
     while True:
         
-    
+        dif_hora_2 = datetime.datetime.now()
+        
+        diferencia = nueva_hora_objeto - hora_actual
+        diferencia_horas = diferencia.seconds // 3600
+        diferencia_minutos = (diferencia.seconds % 3600) // 60
+        diferencia_segundos = diferencia.seconds % 60
+        dirent_total = diferencia_horas , diferencia_minutos , diferencia_segundos
+            
+        fecha_actual = datetime.datetime.now()
+        tiempo_objeto = fecha_actual.replace(hour=dirent_total[0], minute=dirent_total[1], second=dirent_total[2])
+        dife = tiempo_objeto.strftime("%H:%M:%S")
 
         if keyboard.is_pressed(['ctrl', 'q']):
             break
@@ -156,7 +169,10 @@ else:
         hora_actual = datetime.datetime.now()
         hora_str = hora_actual.strftime('%I:%M:%S %p')
 
-        print("Tiempo actual: ",hora_str,"        ", "Tiempo de ejecucion: ",hora_de_suspencion)
+       #############################
+
+
+        print("Tiempo actual: ",hora_str,"        ", "Tiempo de ejecucion: ",hora_de_suspencion, "     Tiempo Restante: ",dife)
 
         
 
