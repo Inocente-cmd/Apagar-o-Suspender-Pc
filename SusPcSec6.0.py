@@ -108,7 +108,7 @@ while True:
 
 
 
-    if opt == "perra": # codigo secreto
+    if opt == "clown": # codigo secreto
             while True:
                 print("Entraste como admin")
                 if keyboard.is_pressed(['ctrl', 'q']):
@@ -128,20 +128,29 @@ while True:
         if off ==1:
             print("")
         else:
+            
+            if opt >="4":
+                print("El numero no es valido")
+                sleep(3)
+                off = 1
+                break
+            else:
+                if off ==1:
+                    print("")
+                else:
+                    sec = int(input("Escribas los segundos que quiere que el pc espera ante que se accione: "))
 
-            sec = int(input("Escribas los segundos que quiere que el pc espera ante que se accione: "))
+                    hora_actual = datetime.datetime.now()
+                    hora_str = hora_actual.strftime('%I:%M:%S %p')
+                    print("Hora actual:", hora_str)
 
-            hora_actual = datetime.datetime.now()
-            hora_str = hora_actual.strftime('%I:%M:%S %p')
-            print("Hora actual:", hora_str)
+                    hora_objeto = datetime.datetime.strptime(hora_str, '%I:%M:%S %p')
+                    nueva_hora_objeto = hora_objeto + timedelta(seconds=sec)
+                    hora_de_suspencion = nueva_hora_objeto.strftime('%I:%M:%S %p')
+                    print("Hora de suspencion:", hora_de_suspencion)
 
-            hora_objeto = datetime.datetime.strptime(hora_str, '%I:%M:%S %p')
-            nueva_hora_objeto = hora_objeto + timedelta(seconds=sec)
-            hora_de_suspencion = nueva_hora_objeto.strftime('%I:%M:%S %p')
-            print("Hora de suspencion:", hora_de_suspencion)
-
-            time.sleep(0.5)
-            break
+                    time.sleep(0.5)
+                    break
 
 if off ==1:
     print("")
