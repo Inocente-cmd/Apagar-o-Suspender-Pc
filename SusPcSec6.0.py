@@ -20,6 +20,7 @@ aPrint(f"OJO: La aplicacion va a esta precionanado el shift, cuidado que esto le
 
 sleep(2)
 
+
 print("Para para de emergencia mantenga precionada la tecla 'control + q' \n")
 
 sleep(0.5)
@@ -88,7 +89,7 @@ while True:
                 pyautogui.typewrite("whatsapp")
                 sleep(0.5)
                 pyautogui.press("enter")
-                sleep(1)
+                sleep(2.1)
                 pyautogui.typewrite("625")
                 sleep(0.5)
                 pyautogui.press("tab")
@@ -126,17 +127,17 @@ while True:
     else:
 
         if off ==1:
-            print("")
+            pass
         else:
             
-            if opt >="4":
+            if opt.isdigit() and int(opt) >= 4:
                 print("El numero no es valido")
-                sleep(3)
+                sleep(1)
                 off = 1
                 break
             else:
                 if off ==1:
-                    print("")
+                    pass
                 else:
                     sec = int(input("Escribas los segundos que quiere que el pc espera ante que se accione: "))
 
@@ -153,7 +154,7 @@ while True:
                     break
 
 if off ==1:
-    print("")
+    pass
 else:
 
     dif_hora_1 = datetime.datetime.now()
