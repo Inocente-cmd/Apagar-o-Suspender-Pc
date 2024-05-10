@@ -21,6 +21,7 @@ def aPrint(string,time_test):
 
 aPrint(f"OJO: La aplicacion va a esta precionanado el shift, cuidado que esto le afecte el programa que esta ejecutando ",time_test=0.01)
 
+
 print("Para para de emergencia mantenga precionada la tecla 'control + e' \n")
 print("""*Puede escribir un codigo secreto*
 Las opciones son las siguientes """)
@@ -30,6 +31,7 @@ print("""1. Apagar
 2. Suspender
 3. Charging""")
 
+detener = 0
 off = 0
 elec = 0
 
@@ -118,6 +120,57 @@ def valorcito(valores):
         else:
             pass
 
+def estado_bateria():
+    battery = psutil.sensors_battery()
+    percent = battery.percent
+    charging = battery.power_plugged
+    char = False
+    if charging == False:
+        char = "No esta cargando"
+    if charging == True:
+        char = "Esta cargando"
+
+    return char, percent
+
+def lleno():
+    texto = "The Battery is fully charged"
+    texto2 = "Please disconect the charger"
+            #texto = "The bluethood devise is ready to pair, The bluethood devise is conected sucessfully"
+    
+    while True:
+        battery = psutil.sensors_battery()
+        charging = battery.power_plugged
+        char = False
+        if charging == False:
+            char = "No esta cargando"
+        if charging == True:
+            char = "Esta cargando"
+        if char == "No esta cargando":
+            break
+        texto_a_voz(texto)
+        if char == "No esta cargando":
+            break
+        if keyboard.is_pressed(['ctrl', 'e']):
+            break
+        if char == "No esta cargando":
+            break
+        texto_a_voz(texto2)
+        if char == "No esta cargando":
+            break
+        if keyboard.is_pressed(['ctrl', 'e']):
+            break
+        if char == "No esta cargando":
+            break
+        musicquita("messi")
+        if char == "No esta cargando":
+            break
+        if keyboard.is_pressed(['ctrl', 'e']):
+            break
+        if char == "No esta cargando":
+            break
+        
+
+
 opt = str(input("Escriba la opccion: "))
 
 if opt == "3" : #charging
@@ -129,21 +182,7 @@ if opt == "3" : #charging
     print("Hora de inicio:", hora_str_in)
     pais = hour()
     while True:
-        battery = psutil.sensors_battery()
-        percent = battery.percent
-        charging = battery.power_plugged
-        """
-        if charging:
-            print(f"Batería: {percent}% (Cargando)")
-        else:
-            print(f"Batería: {percent}% (No está cargando)")
-        """
-        char = False
-        if charging == False:
-            char = "No esta cargando"
-        if charging == True:
-            char = "Esta cargando"
-        
+    
         dif_hora_2 = datetime.datetime.now()
         diferencia = dif_hora_2 - dif_hora_1
         diferencia_horas = diferencia.seconds // 3600
@@ -160,7 +199,8 @@ if opt == "3" : #charging
         hora_actual = datetime.datetime.now()
         hora_str = hora_actual.strftime('%I:%M:%S %p')
         #print("Tienes:",percent,"%","    La bateria:",char,"    La duracion de carga: ",dife,"   Hora de inicio:", hora_str_in, "   Hora actual:", hora_str, )
-        print("Tienes:",percent,"%","    La bateria:",char,"    La duracion de carga: ",dife,)
+        nivel, estado = estado_bateria()
+        print("Tienes:",estado,"%","    La bateria:",nivel,"    La duracion de carga: ",dife,)
         hora_actual = datetime.datetime.now()
         hora_str = hora_actual.strftime('%I:%M:%S %p')
         time_actial = datetime.datetime.now()
@@ -172,21 +212,11 @@ if opt == "3" : #charging
             time.sleep(1)
             pais = hour()
 
-
-        if percent == 80:
-            texto = "The Battery is fully charged"
-            texto2 = "Please disconect the charger"
-            #texto = "The bluethood devise is ready to pair, The bluethood devise is conected sucessfully"
-            while True:
-                texto_a_voz(texto)
-                if keyboard.is_pressed(['ctrl', 'e']):
-                    break
-                texto_a_voz(texto2)
-                if keyboard.is_pressed(['ctrl', 'e']):
-                    break
-                musicquita("messi")
-                if keyboard.is_pressed(['ctrl', 'e']):
-                    break
+        if estado == 80:
+            # llamar a una funcion que siempre este verficiando si el carfador ha sido desconecradod o no 
+            # y si no segir con la alarma
+            lleno()
+            break
         else:
             pass         
     
